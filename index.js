@@ -3,8 +3,8 @@ var fs=require('fs');
 var app = express();
 var expressWs = require('express-ws')(app);
 var htmlfile=fs.readFileSync(__dirname+"/index.html","utf-8");
-
-htmlfile=htmlfile.replace("{port}",process.env.PORT || 3000);
+var port=process.env.PORT || 3000;
+htmlfile=htmlfile.replace("{port}",port);
 console.log(htmlfile);
 app.use(function (req, res, next) {
   console.log('middleware');
@@ -30,5 +30,5 @@ app.ws('/', function(ws, req) {
   console.log('socket', req.testing);
 });
 
-app.listen(process.env.PORT || 3000);
+app.listen(port);
 // }).listen(process.env.PORT || 5000);
