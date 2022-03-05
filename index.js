@@ -18,7 +18,7 @@ app.get('/', function(req, res, next){
   // console.log('get route', req.testing);
   // res.end();
   
-  res.sendFile(__dirname+"/index.html");
+  res.send(htmlfile);
 });
 var count=0;
 app.ws('/', function(ws, req) {
