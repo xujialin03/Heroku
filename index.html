@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Socket.IO chat</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        body {font: 13px Helvetica,Arial;}
+        form{background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%;}
+        form input{border: 0; padding: 10px; width: 90%; margin-right: 0.5%;}
+        form button{width: 9%; background: rgb(130,224,255); border: none; padding: 10px;}
+        #messages{list-style-type: none; margin: 100; padding: 100;}
+        #messages li{padding: 5px 10px;}
+        #messages li:nth-child(odd) { background: #eee;}
+    </style>
+</head>
+<body>
+    <div>port=</div>
+    <button id="testbtn">test</button>
+    <ul id="messages"></ul>
+    <form action="">
+        <input id="m" autocomplete="off" />
+        <button>Send</button>
+    </form>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <!-- <script src="//cdn.bootcdn.net/ajax/libs/socket.io/3.0.4/socket.io.js"></script> -->
+    <script>
+        // $(document).ready(function()
+        // {
+        //     var socket=io('//');
+        //     console.log('hello');
+        //     socket.on('connect',()=>{
+        //         console.log('connect'+socket.id);
+        //     });
+        //     $('form').submit(function(e){
+        //         e.preventDefault();
+        //         var info=$('#m').val();
+        //         console.log(info);
+        //         socket.emit('chat message',info);
+        //         $('#m').val('');
+        //         return false;
+
+        //     })
+        //     socket.on('chat message',function(msg){
+        //         // $('#messages').append('<li>'+text(msg)+'</li>')
+        //         $('#messages').append('<li>'+msg+'</li>');
+        //         console.log('recrive msg：'+msg);
+        //     })
+        // })
+        // const port=process.env.PORT || 5000;
+        const port={port};
+        $(document).ready(function(){
+            console.log('aaa');
+            // console.log(port);
+            var ws = new WebSocket('ws://localhost:'+port);
+   
+        // Web Socket 已连接上，使用 send() 方法发送数据
+        ws.onopen = function() {
+        // 这里用一个延时器模拟事件
+            setInterval(function() {
+                ws.send('客户端消息');
+            },2000);
+        }
+        // 这里接受服务器端发过来的消息
+        ws.onmessage = function(e) {
+            console.log(e.data)
+        }
+        })
+        
+       
+        
+        
+    </script>
+</body>
+</html>
