@@ -51,7 +51,7 @@
         $(document).ready(function(){
             console.log('aaa');
             // console.log(port);
-            var ws = new WebSocket('wss://heroku20220304.herokuapp.com:'+port);
+            var ws = new WebSocket('wss://heroku20220304.herokuapp.com');
    
         // Web Socket 已连接上，使用 send() 方法发送数据
         ws.onopen = function() {
@@ -66,10 +66,6 @@
             console.log(e.data)
         }
         })
-        
-       
-        
-        
     </script>
 </body>
 </html>
