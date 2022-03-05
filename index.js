@@ -15,10 +15,12 @@ app.get('/', function(req, res, next){
   // res.end();
   res.sendFile(__dirname+"/index.html");
 });
-
+var count=0;
 app.ws('/', function(ws, req) {
   ws.on('message', function(msg) {
     console.log(msg);
+    count++;
+    ws.send("msg"+count);
   });
   console.log('socket', req.testing);
 });
