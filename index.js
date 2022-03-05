@@ -4,6 +4,7 @@ var expressWs = require('express-ws')(app);
 
 app.use(function (req, res, next) {
   console.log('middleware');
+  res.sendFile(__dirname+"/index.html");
   req.testing = 'testing';
   return next();
 });
