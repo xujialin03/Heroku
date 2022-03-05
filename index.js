@@ -5,15 +5,15 @@ var expressWs = require('express-ws')(app);
 app.use(function (req, res, next) {
   console.log('middleware');
   // res.sendFile(__dirname+"/index.html");
-res.send("start1");
 // res.end();
-//   req.testing = 'testing';
-//   return next();
+  req.testing = 'testing';
+  return next();
 });
 
 app.get('/', function(req, res, next){
-  console.log('get route', req.testing);
-  res.end();
+  // console.log('get route', req.testing);
+  // res.end();
+  res.sendFile(__dirname+"/index.html");
 });
 
 app.ws('/', function(ws, req) {
